@@ -38,6 +38,10 @@ button.picture {
     cursor: pointer;
     border: none;
     background-color: #ffff;
+
+    & :active {
+        border-bottom: 2px solid green;
+    }
 }
 
 body {
@@ -56,6 +60,7 @@ header {
     gap: 2rem;
     padding: 1rem 3rem;
     box-shadow: 0px 4px 20px rgb(167, 166, 166);
+    z-index: 1;
 }
 
 .header-info {
@@ -200,7 +205,6 @@ header {
 
 main {
     background-color: var(--main-bg);
-    /* z-index: -1; Cannot display shadow for header for some reason */
     --top-bot-paddings: 1.5em;
     --left-right-paddings: 1.5em;
     padding: var(--top-bot-paddings) var(--left-right-paddings);
@@ -225,7 +229,7 @@ main {
             .card {
                 background-color: var(--header-card-bg);
                 border-left: 6px solid var(--card-border-color);
-                border-radius: 6px;
+                border-radius: 10px;
                 padding: var(--top-bot-paddings) var(--left-right-paddings);
                 box-shadow: 1px 3px 10px gray;
                 display: flex;
@@ -239,7 +243,7 @@ main {
                 
                 .card-controls {
                     display: flex;
-                    gap: 1.2em;
+                    gap: 1.5em;
                     justify-content: flex-end;
                     margin-top: 1em;
                     margin-bottom: 0.5em;
