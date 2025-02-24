@@ -12,9 +12,10 @@
     --buttons-bg: #1992D4;
     --card-content-color: #727272;
 
+    --button-font-size: 16px;
+
     font-family: "Ubuntu", serif;
     font-weight: 500;
-    
 }
 
 a {
@@ -34,7 +35,6 @@ button.picture {
     cursor: pointer;
     border: none;
     background-color: #ffff;
-
 }
 
 body {
@@ -49,6 +49,7 @@ header {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    gap: 2rem;
     padding: 1rem 3rem;
 }
 
@@ -80,7 +81,68 @@ header {
         flex-direction: row;
         justify-content: space-around;
         align-items: center;
+        gap : 30px;
         grid-column: 2 / 3;
+
+        .user-avatar {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+}
+
+.user-avatar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: rgba(115, 48, 222, 0.522);
+    border-radius: 50%;
+
+    img {
+        width: 85%;
+    }
+}
+
+.header-panel {
+    display: grid;
+    grid-template-columns: 2.5fr 1fr;
+    justify-content: space-between;
+    align-items: center;
+
+    .user-greatings {
+        display: grid;
+        grid-template-columns: 1fr 6fr;
+        justify-content: center;
+        align-items: center;
+        gap: 0.5em;
+        .user-avatar {
+            width: 100px;
+            height: 100px;
+        }
+    }
+
+    .activity-controls {
+        display: flex;
+        gap: 2em;
+        
+        button {
+            font-size: var(--button-font-size);
+            font-weight: 600;
+            color: white;
+            background-color: var(--buttons-bg);
+            border: none;
+            border-radius: 2em;
+            padding: 0.8em 2em;
+            cursor: pointer;
+
+            &:active {
+                box-shadow: 4px 4px 10px var(--buttons-bg);
+            }
+        }
     }
 }
 
