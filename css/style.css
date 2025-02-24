@@ -13,6 +13,7 @@
     --header-card-bg: #ffff;
     --buttons-bg: #1992D4;
     --card-content-color: #727272;
+    --card-border-color: #EFB329;
 
     --button-font-size: 16px;
 
@@ -40,10 +41,10 @@ button.picture {
 }
 
 body {
+    background-color: var(--main-bg);
     display: grid;
-    grid-template-columns: 1fr 5fr;
+    grid-template-columns: 1.1fr 5fr;
     grid-template-rows: 1fr 6fr;
-    height: 100vh;
 }
 
 header {
@@ -54,6 +55,7 @@ header {
     justify-content: space-around;
     gap: 2rem;
     padding: 1rem 3rem;
+    box-shadow: 0px 4px 20px rgb(167, 166, 166);
 }
 
 .header-info {
@@ -156,8 +158,7 @@ header {
     display: flex;
     flex-direction: column;
     gap: 60px;
-    padding-left: 25px;
-    padding-top: 20px;
+    padding: 20px 25px;
 
     .logo-container a,
     .navigation a,
@@ -175,14 +176,20 @@ header {
         }
     }
 
+    .logo-container a {
+        align-items: center;
+
+        h2 {
+            font-size: 28px;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+        }
+    }
+
     .navigation li:not(:last-of-type),
     .helpers li:not(:last-of-type) {
         margin-bottom: 1em;
     }
-
-    /* > * {
-    outline: 1px solid red;
-    } */
 
     p {
         color: var(--sidebar-font-color);
@@ -193,6 +200,57 @@ header {
 
 main {
     background-color: var(--main-bg);
-    grid-column: 2 / -1;
+    /* z-index: -1; Cannot display shadow for header for some reason */
+    --top-bot-paddings: 1.5em;
+    --left-right-paddings: 1.5em;
+    padding: var(--top-bot-paddings) var(--left-right-paddings);
+
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 1.5em;
+
+
+    .projects-container {
+        grid-row: 1 / -1;
+        display: flex;
+        flex-direction: column;
+        gap: 1.5em;
+
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 1.5em;
+
+            .card {
+                background-color: var(--header-card-bg);
+                border-left: 6px solid var(--card-border-color);
+                border-radius: 6px;
+                padding: var(--top-bot-paddings) var(--left-right-paddings);
+                box-shadow: 1px 3px 10px gray;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+
+                p {
+                    margin-top: 0.5em;
+                    color: var(--card-content-color);
+                }
+                
+                .card-controls {
+                    display: flex;
+                    gap: 1.2em;
+                    justify-content: flex-end;
+                    margin-top: 1em;
+                    margin-bottom: 0.5em;
+                }
+            }
+        }
+
+        .media-container {
+
+        }
+        
+    }
 }
 
