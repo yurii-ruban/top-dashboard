@@ -18,4 +18,4 @@ The **Admin Dashboard** project is the final project from <em>Intermediate HTML 
 > Note: this task doesn't require the Dashboard to be responsive. Course doesn't cover that topic at the time
 
 ## Screenshot
-![Screenshot]()
+![Screenshot](./img/Screenshot.png)
