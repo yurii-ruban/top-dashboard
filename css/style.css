@@ -14,6 +14,7 @@
     --buttons-bg: #1992D4;
     --card-content-color: #727272;
     --card-border-color: #EFB329;
+    --card-border-radius: 10px;
 
     --button-font-size: 16px;
 
@@ -47,17 +48,19 @@ button.picture {
 body {
     background-color: var(--main-bg);
     display: grid;
+    height: 100vh;
     grid-template-columns: 1.1fr 5fr;
-    grid-template-rows: 1fr 6fr;
+    grid-template-rows: 1fr 8fr;
 }
 
 header {
-    background-color: var(--header-card-bg);
     grid-column: 2 / -1;
+    grid-row: 1 / 2;
+    background-color: var(--header-card-bg);
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    gap: 2rem;
+    gap: 1.5rem;
     padding: 1rem 3rem;
     box-shadow: 0px 4px 20px rgb(167, 166, 166);
     z-index: 1;
@@ -67,7 +70,6 @@ header {
     display: grid;
     grid-template-columns: 3fr 1fr;
     gap: 4rem;
-    /* outline: 1px solid rgb(255, 0, 0); */
 
     .searchbar {
         display: grid;
@@ -91,20 +93,18 @@ header {
         flex-direction: row;
         justify-content: space-around;
         align-items: center;
-        gap : 30px;
+        gap: 30px;
         grid-column: 2 / 3;
 
         .user-avatar {
             width: 50px;
             height: 50px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
         }
     }
 }
 
-.user-avatar {
+.user-avatar,
+.trending-logo {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -129,6 +129,7 @@ header {
         justify-content: center;
         align-items: center;
         gap: 0.5em;
+
         .user-avatar {
             width: 100px;
             height: 100px;
@@ -138,7 +139,7 @@ header {
     .activity-controls {
         display: flex;
         gap: 2em;
-        
+
         button {
             font-size: var(--button-font-size);
             font-weight: 600;
@@ -158,7 +159,7 @@ header {
 
 .sidebar {
     background-color: var(--sidebar-bg);
-    grid-row: 1 / -1;
+    grid-row: 1 / 3;
 
     display: flex;
     flex-direction: column;
@@ -203,20 +204,20 @@ header {
     }
 }
 
-main {
+.main {
     background-color: var(--main-bg);
     --top-bot-paddings: 1.5em;
     --left-right-paddings: 1.5em;
     padding: var(--top-bot-paddings) var(--left-right-paddings);
 
+    grid-column: 2 / -1;
+
     display: grid;
-    grid-template-columns: 2fr 1fr;
-    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 3fr 1fr;
     gap: 1.5em;
 
 
     .projects-container {
-        grid-row: 1 / -1;
         display: flex;
         flex-direction: column;
         gap: 1.5em;
@@ -229,7 +230,7 @@ main {
             .card {
                 background-color: var(--header-card-bg);
                 border-left: 6px solid var(--card-border-color);
-                border-radius: 10px;
+                border-radius: var(--card-border-radius);
                 padding: var(--top-bot-paddings) var(--left-right-paddings);
                 box-shadow: 1px 3px 10px gray;
                 display: flex;
@@ -240,7 +241,7 @@ main {
                     margin-top: 0.5em;
                     color: var(--card-content-color);
                 }
-                
+
                 .card-controls {
                     display: flex;
                     gap: 1.5em;
@@ -250,11 +251,86 @@ main {
                 }
             }
         }
+    }
 
-        .media-container {
+    .media-container {
+        display: flex;
+        flex-direction: column;
+        gap: 2.5em;
 
+        .announcements-container,
+        .trending-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
         }
-        
+
+        .announcements-container {
+            .announcement-panel {
+                background-color: var(--header-card-bg);
+                border-radius: var(--card-border-radius);
+                padding: var(--top-bot-paddings) var(--left-right-paddings);
+
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 1em;
+                box-shadow: 1px 3px 10px gray;
+
+                .announcement-card:not(:last-child) {
+                    padding-bottom: 1.4em;
+                    border-bottom: 1px solid var(--card-content-color);
+                }
+
+                .announcement-card {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 0.5em;
+                    
+
+                    p {
+                        color: var(--card-content-color);
+                        font-size: 13px;
+                        overflow: hidden;
+                        display: -webkit-box;
+                        -webkit-line-clamp: 3;
+                                line-clamp: 3; 
+                        -webkit-box-orient: vertical;
+                    }
+                }
+            }
+        }
+
+        .trending-container {
+            .trending-panel {
+                background-color: var(--header-card-bg);
+                border-radius: var(--card-border-radius);
+                padding: var(--top-bot-paddings) var(--left-right-paddings);
+
+                display: grid;
+                grid-template-rows: repeat(auto-fit, 1fr);
+                gap: 1.5rem;
+                box-shadow: 1px 3px 10px gray;
+                
+                .trending-card {
+                    display: flex;
+                    gap: 0.7rem;
+                    align-items: center;
+
+                    .trending-logo {
+                        width: 50px;
+                        height: 50px;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                    }
+
+                    .trending-item-info {
+                        .description {
+                            color: var(--card-content-color);
+                        }
+                    }
+                }
+            }
+        }
     }
 }
-
